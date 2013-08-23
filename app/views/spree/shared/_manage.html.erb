@@ -1,31 +1,5 @@
 <% content_for :body_class do %>user-info<% end %>
 
-<%
-#TODO: make these collapsible sections?
-# Address
-  # Shipping
-    # Street Address*
-    # Street Address (cont'd)
-    # City*
-    # Country*
-    # State*
-    # Zip*
-  # Billing
-    # Street Address*
-    # Street Address (cont'd)
-    # City*
-    # Country*
-    # State*
-    # Zip*
-  # Preferences
-    # Contact Info
-      # Phone*
-    # Skin type
-      # take / retake quiz
-      # dropdown: choose number
-      # button: 'i already know my skin type...'
-%>
-
 <div data-hook="account_summary" class="account-summary">
 
 <% if @user.last_order %>
