@@ -1,0 +1,17 @@
+/*
+ *= require store/spree_frontend
+ *= require store/select2
+*/
+
+.collapse .inner { display:none; }
+.collapse.open .inner { display:block; }
+
+.user-info dl {
+  margin-bottom: 15px;
+  border: 1px solid #d9d9db;
+  padding: 10px;
+}
+
+.update-address {
+  float:right;
+}
