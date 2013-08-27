@@ -1,53 +1,7 @@
 <% content_for :body_class do %>user-info<% end %>
 
 <div data-hook="account_summary" class="account-summary">
-
-<% if @user.last_order %>
-  <dl>
-    <dt><%= Spree.t(:name) %></dt>
-    <dd><%= @user.last_order.name %></dd>
-  </dl>
-
-  <dl>
-    <dt><%= Spree.t(:phone) %></dt>
-    <dd><%= number_to_phone(@user.phone, area_code: true) %></dd>
-  </dl>
-
-  <dl>
-    <dt><%= Spree.t(:shipping_address) %></dt>
-    <dd>
-      <%= shipping.address1 %> <br />
-      <% unless shipping.address2.blank? %>
-        <%= shipping.address2 %> <br />
-      <% end %>
-      <%= shipping.city %>, <%= shipping.state_text %> <%= shipping.zipcode %>
-      <div class="update-address">
-      <% if @user.order_addresses.size > 1 %>
-        <%= form_for @user do |f| %>
-          <%= f.label :ship_address_id, "Default" %>
-          <%= select(:user, :ship_address_id, @user.order_addresses) %>
-        <% end %>
-      <% end %>
-      </div>
-    </dd>
-  </dl>
-
-  <dl>
-    <dt><%= Spree.t(:billing_address) %></dt>
-    <dd>
-      <%= billing.address1 %> <br />
-      <% unless billing.address2.blank? %>
-        <%= billing.address2 %> <br />
-      <% end %>
-      <%= billing.city %>, <%= billing.state_text %> <%= billing.zipcode %>
-      <div class="update-address">
-        <%= form_for @user do |f| %>
-          <%= f.label :bill_address_id, "Default" %>
-          <%= f.check_box :bill_address_id, {}, billing.id %> <br />
-      <% end %>
-      </div>
-    </dd>
-  </dl>
-<% end %>
-
+  <%= form_for @order, url: user_path(@user) do |form| %>
+    <%= render partial: "spree/checkout/address", locals: { form: form } %>
+  <% end %>
 </div>
